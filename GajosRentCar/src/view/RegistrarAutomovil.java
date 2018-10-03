@@ -5,12 +5,10 @@
  */
 package view;
 
-import models.Automovil;
-import models.modeloAutomovil;
+import controler.controladorAdministrador;
 
 public class RegistrarAutomovil extends javax.swing.JFrame {
     private static RegistrarAutomovil INSTANCE = null;
-    modeloAutomovil modeloAuto = modeloAutomovil.getInstance();
     
     public RegistrarAutomovil() {
         initComponents();
@@ -190,18 +188,11 @@ public class RegistrarAutomovil extends javax.swing.JFrame {
         String placa = textFieldPlaca.getText();
         String combustible = (String)cbCombustible.getSelectedItem();
         
-        Automovil auto = new Automovil(marca,modelo,fecha,capacidad,puertas,placa,combustible);
-        modeloAuto.agregarAutomovil(auto);
+        controladorAdministrador.registrarAutomovil(marca, modelo, fecha, capacidad, puertas, placa, combustible);
         
-   
         textFieldModelo.setText("");
         textFieldFecha.setText("");
         textFieldPlaca.setText("");
-       
-        RegistrarAutomovil registro = RegistrarAutomovil.getInstance();
-        registro.setVisible(false);
-        VentanaAdministrador admin = VentanaAdministrador.getInstance();
-        admin.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
